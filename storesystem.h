@@ -16,3 +16,18 @@ typedef struct node
     struct node *next;
 }GamesList;
 
+extern int CurrentCnt;
+
+void priceUpdate(GamesList *p);
+void init_list(GamesList **L);
+bool Add_a_Game(GamesList *L ,GamesInfo info, int location);
+bool Delete_a_Game(GamesList *L,char id);
+bool Fix_Game(GamesList *L,char id ,GamesInfo info);
+GamesList* SearchGame(GamesList *L,char id);
+GamesInfo Read_Game_Info();
+void Show_a_Game(GamesList *p);
+void Show_All(GamesList *L);
+void SAVE_FILE(GamesList *L);
+void Sort_Game(GamesList *L);
+void destory_list(GamesList **L);
+void destory_list_and_file(GamesList **L);
