@@ -51,6 +51,8 @@ while (1)
     case 1:
        
         break;
+        case 2:
+        break;
     case 0:
     //SAVE_FILE(gamesList);
     return 0;
