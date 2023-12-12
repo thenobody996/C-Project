@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<stdbool.h>
 #include"storesystem.h"
 
 GamesInfo Read_Game_Info()
@@ -23,5 +24,48 @@ GamesInfo Read_Game_Info()
     gamesinfo.game_price_history = gamesinfo.game_price_now;
 
     return gamesinfo;
+}
+
+bool Add_a_Game(GamesList *L, GamesInfo info, int location)
+{
+    GamesList *p = L;
+
+    switch (location)
+    {
+        case 0:
+        {
+            while(p->next)
+            {
+                p = p->next;
+            }
+            p->next = malloc(sizeof(GamesList));
+            p->next->data = info;
+            p->next->next = NULL;
+            CurrentCnt++;
+            return true;
+        }
+        case 1:
+        {
+            p = malloc(sizeof(GamesList));
+            p->data = info;
+            p->next = L->next;
+            L->next = p;
+            CurrentCnt++;
+            return true;
+        }
+        default:
+        {
+            for(int i = 1; i <= location - 1; i++)
+            {
+                p = p->next;
+            }
+            GamesList *q = malloc(sizeof(GamesList));
+            q->next = p->next;
+            q->data = info;
+            p->next = q;
+            CurrentCnt++;
+            return true;
+        }
+    }
 }
 
