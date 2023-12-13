@@ -38,3 +38,10 @@ void sort_Game(GamesList *L);
 void sort_Game_pricenow(GamesList *L);
 void sort_Game_history(GamesList *L);
 void sort_Game_discount(GamesList *L);
+void inputnumCheck(int *a)
+{
+    while(!scanf("%d",a))
+    {
+        printf("输入错误，应当输入一个数字");
+    }
+}
