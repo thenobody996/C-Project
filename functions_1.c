@@ -1,8 +1,8 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include<stdbool.h>
-#include"storesystem.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include "storesystem.h"
 
 GamesInfo Read_Game_Info()
 {
@@ -41,7 +41,7 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
             p->next->next = NULL;
             CurrentCnt++;
 
-            printf("游戏已成功插入到列表尾部");
+            printf("游戏已成功插入到列表尾部\n");
             return true;
         }
         case 1:  //插入到头部
@@ -52,7 +52,7 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
             L->next = p;
             CurrentCnt++;
 
-            printf("游戏已成功插入到列表头部");
+            printf("游戏已成功插入到列表头部\n");
             return true;
         }
         default:  //插入到中间
@@ -65,13 +65,13 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
             p->next = q;
             CurrentCnt++;
 
-            printf("游戏已成功插入到列表第%d位", location);
+            printf("游戏已成功插入到列表第%d位\n", location);
             return true;
         }
     }
 }
 
-bool Delete_a_Game(GamesList *L,char id)
+bool Delete_a_Game(GamesList *L, char *id)
 {
     GamesList *cur = L, *del = cur->next;
     
@@ -83,12 +83,36 @@ bool Delete_a_Game(GamesList *L,char id)
             free(del);
             CurrentCnt--;
 
-            printf("ID为 %s 的游戏删除成功! ", id);
+            printf("ID为 %s 的游戏删除成功!\n", id);
             return true;
         }
     }
     
-    printf("删除失败! 没有ID为 %s 的游戏", id);
+    printf("删除失败! ID为 %s 的游戏不存在\n", id);
+    return false;
+}
+
+bool Fix_Game(GamesList *L, char *id, GamesInfo info)
+{
+    GamesList *cur = L;
+    
+    for(; cur; cur = cur->next)
+    {
+        if(!strcmp(cur->data.game_id, id))
+        {
+            strcpy(cur->data.game_id, info.game_id);
+            strcpy(cur->data.game_name, info.game_name);
+            cur->data.game_discount = info.game_discount;
+            cur->data.game_price_origin = info.game_price_origin;
+            cur->data.game_price_now = info.game_price_now;
+            cur->data.game_price_history = cur->data.game_price_history < info.game_price_history ? cur->data.game_price_history : info.game_price_history;
+
+            printf("ID为 %s 的游戏信息修改成功!\n", id);
+            return true;
+        }
+    }
+    
+    printf("修改失败! ID为 %s 的游戏不存在\n", id);
     return false;
 }
 
