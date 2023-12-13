@@ -59,6 +59,13 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
         {
             for(int i = 1; i <= location - 1; i++)
                 p = p->next;
+
+            if(!p)
+            {
+                printf("插入失败! 目标位置超出已有项目数量");
+                return false;
+            }
+
             GamesList *q = malloc(sizeof(GamesList));
             q->next = p->next;
             q->data = info;
