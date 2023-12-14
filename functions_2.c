@@ -28,7 +28,8 @@ int SAVE_FILE(GamesList *L)
     int cnt = 0;
     for(p = L->next; p; p = p->next)
     {
-        fprintf(file, "%-25s\t%-35s\t%-8.2f\t-%-4.1f%\t%-8.2f\t%-8.2f\t", p->data.game_id, p->data.game_name, p->data.game_price_origin, p->data.game_discount, p->data.game_price_now, p->data.game_price_history);
+        fprintf(file, "%-25s\t%-35s\t%-8.2f\t-%-4.1f%%\t%-8.2f\t%-8.2f\n", 
+        p->data.game_id, p->data.game_name, p->data.game_price_origin, p->data.game_discount, p->data.game_price_now, p->data.game_price_history);
         cnt++;
     }
 

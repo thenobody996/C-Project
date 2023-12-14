@@ -11,6 +11,7 @@ int main(void){
     GamesInfo info;
     //init_list(&gamesList);
     char ID[MAX_ID];
+    char name[MAX_NAME_LEN];
 
 system("chcp 65001 & cls");//支持中文输出
 //用户界面
@@ -68,8 +69,7 @@ while (1)
 
         case 2:
             printf("请输入你要查找的游戏对应ID：");
-            fgets(ID,MAX_ID,stdin);
-            SearchGame(gamesList,ID);
+            fgets(name,MAX_NAME_LEN,stdin);
             break;
 
 
@@ -85,7 +85,10 @@ while (1)
 
         case 4:
         printf("请输入你要删除的游戏对应的ID：");
+        fgets(ID,MAX_ID,stdin);
         
+        case 5:
+
         case 0:
         //SAVE_FILE(gamesList);
         return 0;
