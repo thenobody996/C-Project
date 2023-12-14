@@ -1,4 +1,4 @@
-#define GOODS_FILE_NAME gamesinfo.txt
+#define GOODS_FILE_NAME "gamesinfo.txt"
 #define MAX_ID 25
 #define MAX_NAME_LEN 35
 #define MAX_ORIGINAL_PRICE 20
