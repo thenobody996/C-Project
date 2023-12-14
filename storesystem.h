@@ -21,7 +21,6 @@ typedef struct node
 
 extern int CurrentCnt;
 
-void priceUpdate(GamesList *p);
 void init_list(GamesList **L);
 bool Add_a_Game(GamesList *L, GamesInfo info, int location);
 bool Delete_a_Game(GamesList *L, char *id);

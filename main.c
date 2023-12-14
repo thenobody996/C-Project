@@ -28,11 +28,10 @@ printf("拯救钱包，拒绝背刺！");
 for(size_t i = 0;i<10;i++)
 printf("-");
 printf("\n");
+
+//循环主体
 while (1)
 {
-    
-
-
     for (size_t i = 0; i < 40; i++)
         printf("*");
     printf("\n");
@@ -59,34 +58,42 @@ while (1)
     {
         code = code / 10;
     }
-    
+    //功能跳转
     switch (code)
     {
-    case 1:
-        Show_All(gamesList);
-        break;
-    case 2:
-        printf("请输入你要查找的游戏对应ID：");
-        fgets(ID,MAX_ID,stdin);
-        SearchGame(gamesList,ID);
-        break;
-    case 3:
-        info = Read_Game_Info();
-        printf("要插入到链表的第几位？\n提示：输入0视为添加到链表最后一位");
+        case 1:
+            Show_All(gamesList);
+            break;
+
+
+        case 2:
+            printf("请输入你要查找的游戏对应ID：");
+            fgets(ID,MAX_ID,stdin);
+            SearchGame(gamesList,ID);
+            break;
+
+
+        case 3:
+            info = Read_Game_Info();
+            printf("要插入到链表的第几位？\n提示：输入0视为添加到链表最后一位");
         while(!scanf("%d",&inputnum))
     {
         printf("输入错误，应当输入一个数字");
     }
         Add_a_Game(gamesList,info,inputnum);
-    case 4:
+
+
+        case 4:
         printf("请输入你要删除的游戏对应的ID：");
         
-    case 0:
-    //SAVE_FILE(gamesList);
-    return 0;
-    break;
-    default:
-    puts("输入错误，请重试");
+        case 0:
+        //SAVE_FILE(gamesList);
+        return 0;
+        break;
+
+
+        default:
+        puts("输入错误，请重试");
         break;
     }
 
