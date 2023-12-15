@@ -4,12 +4,15 @@
 #include<stdbool.h>
 #include"storesystem.h"
 
-int main(void){
+
+int main(void)
+{
     int code;
     int inputnum;
-    GamesList *gamesList;
+    GamesList *gamesList, *result;
     GamesInfo info;
-    //init_list(&gamesList);
+    init_list(&gamesList);
+    char respond;
     char ID[MAX_ID];
     char name[MAX_NAME_LEN];
 
@@ -45,6 +48,7 @@ while (1)
     printf("---6.按照特定条件排序\n");
     printf("---7.删除所有数据\n");
     printf("---8.使用文件批量添加游戏\n");
+    printf("---9不保存数据退出\n");
     printf("---0.保存数据并退出系统\n");
     for (size_t i = 0; i < 40; i++)
 {
@@ -68,8 +72,10 @@ while (1)
 
 
         case 2:
-            printf("请输入你要查找的游戏对应ID：");
+            printf("请输入你要查找的游戏对应名称：");
             fgets(name,MAX_NAME_LEN,stdin);
+            result = SearchGame(gamesList,name,1);
+            Show_a_Game(result);
             break;
 
 
@@ -81,27 +87,54 @@ while (1)
         printf("输入错误，应当输入一个数字");
     }
         Add_a_Game(gamesList,info,inputnum);
-
-
-        case 4:
-        printf("请输入你要删除的游戏对应的ID：");
-        fgets(ID,MAX_ID,stdin);
-        
-        case 5:
-
-        case 0:
-        //SAVE_FILE(gamesList);
-        return 0;
         break;
 
+        case 4:
+            printf("请输入你要删除的游戏对应的ID：");
+            fgets(ID,MAX_ID,stdin);
+            result = SearchGame(gamesList,ID,0);
+            Show_a_Game(result);
+            printf("以上是你要删除的信息，确认删除请输入y，取消则输入n");
+            while ((respond = getchar()) != 'n')
+            {
+                if(respond = 'y')
+                {   printf("已执行删除功能");
+                    Delete_a_Game(gamesList,ID);
+                    while (getchar()!= '\n')
+                        continue;
+                    break;
+                }
+                else
+                {
+                    printf("输入错误，请重新输入");
+                    while (getchar()!= '\n')
+                        continue;
+                    continue;
+                }
+            }
+            break;
+        case 5:
+            printf("请输入你要修改的游戏对应的ID：\n");
+            fgets(ID,MAX_ID,stdin);
+            result = SearchGame(gamesList,ID,0);
+            Show_a_Game(result);
+            printf("请输入你需要更正的信息\n");
+            info = Read_Game_Info();
+            Fix_Game(gamesList,ID,info);
+            break;
+        case 6:
+            
+        case 9:
+            destory_list(&gamesList);
+            return 0;
 
+        case 0:
+        SAVE_FILE(gamesList);
+        destory_list(&gamesList);
+        return 0;
         default:
         puts("输入错误，请重试");
         break;
     }
-
-    
-getchar();
-return 0;
-}
+    }
 }

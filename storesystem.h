@@ -25,7 +25,7 @@ void init_list(GamesList **L);
 bool Add_a_Game(GamesList *L, GamesInfo info, int location);
 bool Delete_a_Game(GamesList *L, char *id);
 bool Fix_Game(GamesList *L, char *id, GamesInfo info);
-GamesList* SearchGame(GamesList *L, char *name);
+GamesList* SearchGame(GamesList *L, char *ch,int mode);//最后的整数如果是1，则按名称查询，如果为0，则按ID查询
 GamesInfo Read_Game_Info();
 void Show_a_Game(GamesList *p);
 void Show_All(GamesList *L);
@@ -37,10 +37,4 @@ void sort_Game(GamesList *L);
 void sort_Game_pricenow(GamesList *L);
 void sort_Game_history(GamesList *L);
 void sort_Game_discount(GamesList *L);
-void inputnumCheck(int *a)
-{
-    while(!scanf("%d",a))
-    {
-        printf("输入错误，应当输入一个数字");
-    }
-}
+void inputnumCheck(int *a);
