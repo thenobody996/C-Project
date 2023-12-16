@@ -24,12 +24,12 @@ int SAVE_FILE(GamesList *L)
         return -1;
 
     GamesList *p;
-    FILE* file = fopen(GOODS_FILE_NAME, "w");
+    FILE* file = fopen(GAMES_FILE_NAME, "w");
 
     int cnt = 0;
     for(p = L->next; p; p = p->next)
     {
-        fprintf(file, "|%-25s|%-35s|%-8.2f|-%-4.1f%%|%-8.2f|%-8.2f|\n", 
+        fprintf(file, "|%-25s|%-35s|%-8.2f|%-4.1f|%-8.2f|%-8.2f|\n", 
         p->data.game_id, p->data.game_name, p->data.game_price_origin, p->data.game_discount, p->data.game_price_now, p->data.game_price_history);
         cnt++;
     }

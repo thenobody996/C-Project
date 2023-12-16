@@ -13,13 +13,13 @@ void init_list(GamesList **L)
     GamesInfo info;
     FILE *f;
 
-    f = fopen(GOODS_FILE_NAME,"r");
+    f = fopen(GAMES_FILE_NAME,"r");
     if(f == NULL)
     {
         perror("fopen has occurred an error");
     }
 
-    while (fscanf(f,"|%-25s|%-35s|%-8.2f|-%-4.1f%%|%-8.2f|%-8.2f|\n",
+    while (fscanf(f,"|%-25s|%-35s|%-8.2f|%-4.1f|%-8.2f|%-8.2f|\n",
     info.game_id,info.game_name,&info.game_price_origin,&info.game_discount,&info.game_price_now,&info.game_price_origin)
     != EOF)
     {
