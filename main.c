@@ -74,7 +74,7 @@ while (1)
 
         case 2:
             printf("请输入你要查找的游戏对应名称：");
-            fgets(name,MAX_NAME_LEN,stdin);
+            gets(name);
             result = SearchGame(gamesList,name,1);
             Show_a_Game(result);
             break;
@@ -92,7 +92,7 @@ while (1)
 
         case 4:
             printf("请输入你要删除的游戏对应的ID：");
-            fgets(ID,MAX_ID,stdin);
+            gets(ID);
             result = SearchGame(gamesList,ID,0);
             Show_a_Game(result);
             printf("以上是你要删除的信息，确认删除请输入y，取消则输入n");
@@ -116,7 +116,7 @@ while (1)
             break;
         case 5:
             printf("请输入你要修改的游戏对应的ID：\n");
-            fgets(ID,MAX_ID,stdin);
+            gets(ID);
             result = SearchGame(gamesList,ID,0);
             Show_a_Game(result);
             printf("请输入你需要更正的信息\n");
