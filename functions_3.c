@@ -12,19 +12,19 @@ void inputnumCheck(int *a)
     }
 }
 
-GamesList* SearchGame(GamesList *L, char *ch,int mode)
+GamesList* SearchGame(GamesList *L, char *ch, int mode)
 {
     GamesList *p = L;
     
     if(mode == 0)//ID查询
     {
-        while(p!= NULL&&strcmp(p->data.game_id,ch))
+        while(p && strcmp(p->data.game_id, ch))
             p = p->next;
         return p;
     }   
     if(mode == 1)//名称查询
     {
-        while(p!= NULL&&strcmp(p->data.game_name,ch))
+        while(p && strcmp(p->data.game_name, ch))
             p = p->next;
         return p;
     }
@@ -32,14 +32,16 @@ GamesList* SearchGame(GamesList *L, char *ch,int mode)
 
 void Show_All(GamesList *L)
 {
-    while(L->next!=NULL)
+    GamesList *p = L;
+
+    while(p->next)
     {
-        Show_a_Game(L->next);
-        L = L->next;
+        Show_a_Game(p->next);
+        p = p->next;
     }
 }
 
 void Show_a_Game(GamesList *p)
 {
-    printf("%s\t%s\t%f\t%f\t%f\t%f\n",p->data.game_id,p->data.game_name,p->data.game_price_origin,p->data.game_price_now,p->data.game_price_history,p->data.game_discount);
+    printf("|%-25s|%-35s|%-8.2f|-%-4.1f%%|%-8.2f|%-8.2f|\n",p->data.game_id,p->data.game_name,p->data.game_price_origin,p->data.game_discount,p->data.game_price_now,p->data.game_price_history);
 }
