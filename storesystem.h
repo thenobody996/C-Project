@@ -21,7 +21,7 @@ typedef struct node
 
 extern int CurrentCnt;
 
-void init_list(GamesList **L);
+void init_list(GamesList **pL);
 bool Add_a_Game(GamesList *L, GamesInfo info, int location);
 bool Delete_a_Game(GamesList *L, char *id);
 bool Fix_Game(GamesList *L, char *id, GamesInfo info);
@@ -31,8 +31,8 @@ void Show_a_Game(GamesList *p);
 void Show_All(GamesList *L);
 int SAVE_FILE(GamesList *L);
 void Sort_Game(GamesList *L);
-void destory_list(GamesList **L);
-void destory_list_and_file(GamesList **L);
+void destory_list(GamesList **pL);
+void destory_list_and_file(GamesList **pL);
 void sort_Game(GamesList *L);
 void sort_Game_pricenow(GamesList *L);
 void sort_Game_history(GamesList *L);

@@ -4,18 +4,21 @@
 #include <stdbool.h>
 #include "storesystem.h"
 
-void destory_list(GamesList **L)
+void destory_list(GamesList **pL)
 {
-    for (; *L; *L = (*L)->next)
-        free(*L);
-    L = NULL;
+    GamesList *cur = *pL, *des;
+
+    for (; cur->next; des = cur->next, cur->next = des->next)
+        free(des);
+    free(*pL);
+    *pL = NULL;
     CurrentCnt = 0;
 }
 
-void destory_list_and_file(GamesList **L)
+void destory_list_and_file(GamesList **pL)
 {
-    destory_list(L);
-    remove("gamesinfo.txt");
+    destory_list(pL);
+    remove(GAMES_FILE_NAME);
 }
 
 int SAVE_FILE(GamesList *L)

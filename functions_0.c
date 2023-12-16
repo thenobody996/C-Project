@@ -4,12 +4,12 @@
 #include<string.h>
 #include"storesystem.h"
 int CurrentCnt = 0;
-void init_list(GamesList **L)
+void init_list(GamesList **pL)
 {
     
-    *L = (GamesList *)malloc(sizeof(GamesList));//建立头节点
-    (*L)->next = NULL;//头节点目前不指向任何数据
-    GamesList *ends= *L;
+    *pL = (GamesList *)malloc(sizeof(GamesList));//建立头节点
+    (*pL)->next = NULL;//头节点目前不指向任何数据
+    GamesList *ends= *pL;
     GamesInfo info;
     FILE *f;
 
@@ -20,7 +20,7 @@ void init_list(GamesList **L)
     }
 
     while (fscanf(f,"|%-25s|%-35s|%-8.2f|%-4.1f|%-8.2f|%-8.2f|\n",
-    info.game_id,info.game_name,&info.game_price_origin,&info.game_discount,&info.game_price_now,&info.game_price_origin)
+    info.game_id,info.game_name,&info.game_price_origin,&info.game_discount,&info.game_price_now,&info.game_price_history)
     != EOF)
     {
         GamesList *L = (GamesList *)malloc(sizeof(GamesList));//建立新的节点
