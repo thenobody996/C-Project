@@ -58,12 +58,14 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
         default:  //插入到中间
         {
             for(int i = 1; i <= location - 1; i++)
+            {
                 p = p->next;
 
-            if(!p)
-            {
-                printf("插入失败! 目标位置超出已有项目数量");
-                return false;
+                if(!p)
+                {
+                    printf("插入失败! 目标位置超出已有项目数量");
+                    return false;
+                }
             }
 
             GamesList *q = malloc(sizeof(GamesList));
@@ -84,7 +86,7 @@ bool Delete_a_Game(GamesList *L, char *id)
     
     for(; del; del = del->next, cur = cur->next)
     {
-        if(!strcmp(del->data.game_id, id))
+        if(strcmp(del->data.game_id, id) == 0)
         {
             cur->next = del->next;
             free(del);
@@ -105,7 +107,7 @@ bool Fix_Game(GamesList *L, char *id, GamesInfo info)
     
     for(; cur; cur = cur->next)
     {
-        if(!strcmp(cur->data.game_id, id))
+        if(strcmp(cur->data.game_id, id) == 0)
         {
             strcpy(cur->data.game_id, info.game_id);
             strcpy(cur->data.game_name, info.game_name);
