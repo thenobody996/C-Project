@@ -2,7 +2,8 @@
   "C_Cpp.default.compilerPath": "C:\\mingw64\\bin\\gcc.exe",
   "files.associations": {
     "*.md": "markdown",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "storesystem.h": "c"
   },
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.cCompilerPath": "gcc",
