@@ -47,8 +47,7 @@ while (1)
     printf("---5.更改指定游戏信息\n");
     printf("---6.按照特定条件排序\n");
     printf("---7.删除所有数据\n");
-    printf("---8.使用文件批量添加游戏\n");
-    printf("---9不保存数据退出\n");
+    printf("---8.不保存数据退出\n");
     printf("---0.保存数据并退出系统\n");
     for (size_t i = 0; i < 40; i++)
 {
@@ -123,9 +122,12 @@ while (1)
             info = Read_Game_Info();
             Fix_Game(gamesList,ID,info);
             break;
-        case 6:
-            
-        case 9:
+        case 6: 
+            break;
+        case 7:
+            destory_list_and_file(&gamesList);
+            break;
+        case 8:
             destory_list(&gamesList);
             return 0;
 
