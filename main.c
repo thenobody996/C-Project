@@ -63,6 +63,7 @@ while (1)
     {
         code = code / 10;
     }
+    while(getchar() != '\n');
     //功能跳转
     switch (code)
     {

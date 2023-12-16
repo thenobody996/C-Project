@@ -9,10 +9,10 @@ GamesInfo Read_Game_Info()
     GamesInfo gamesinfo;
 
     printf("请输入游戏ID: ");
-    fgets(gamesinfo.game_id, MAX_ID, stdin);
+    gets(gamesinfo.game_id);
 
     printf("请输入游戏名称: ");
-    fgets(gamesinfo.game_name, MAX_NAME_LEN, stdin);
+    gets(gamesinfo.game_name);
 
     printf("请输入游戏原价: ");
     scanf("%f", &gamesinfo.game_price_origin);
