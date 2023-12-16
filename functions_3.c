@@ -14,17 +14,19 @@ void inputnumCheck(int *a)
 
 GamesList* SearchGame(GamesList *L, char *ch,int mode)
 {
+    GamesList *p = L;
+    
     if(mode == 0)//ID查询
     {
-        while(L!= NULL&&strcmp(L->data.game_id,ch))
-            L = L->next;
-        return L;
+        while(p!= NULL&&strcmp(p->data.game_id,ch))
+            p = p->next;
+        return p;
     }   
     if(mode == 1)//名称查询
     {
-        while(L!= NULL&&strcmp(L->data.game_name,ch))
-            L = L->next;
-        return L;
+        while(p!= NULL&&strcmp(p->data.game_name,ch))
+            p = p->next;
+        return p;
     }
 }
 
