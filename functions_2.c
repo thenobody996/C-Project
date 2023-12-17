@@ -8,7 +8,7 @@ void destory_list(GamesList **pL)
 {
     GamesList *cur = *pL, *des;
 
-    while(cur->next)
+    while (cur->next)
     {
         des = cur->next;
         cur->next = des->next;
@@ -28,14 +28,14 @@ void destory_list_and_file(GamesList **pL)
 
 int SAVE_FILE(GamesList *L)
 {
-    if(!L)
+    if (!L)
         return -1;
 
     GamesList *p;
     FILE* file = fopen(GAMES_FILE_NAME, "w");
 
     int cnt = 0;
-    for(p = L->next; p; p = p->next)
+    for (p = L->next; p; p = p->next)
     {
         fprintf(file, "%-25s%-35s%-8.2f%-4.1f%-8.2f%-8.2f\n", 
         p->data.game_id, p->data.game_name, p->data.game_price_origin, p->data.game_discount, p->data.game_price_now, p->data.game_price_history);

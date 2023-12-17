@@ -20,7 +20,7 @@ GamesInfo Read_Game_Info()
     printf("请输入游戏折扣(百分比,不用填写百分号): ");
     scanf("%f", &gamesinfo.game_discount);
 
-    gamesinfo.game_price_now = gamesinfo.game_price_origin * (1 - gamesinfo.game_discount / 100);  //计算折后价格
+    gamesinfo.game_price_now = gamesinfo.game_price_origin * (1 - gamesinfo.game_discount / 100);   //计算折后价格
     gamesinfo.game_price_history = gamesinfo.game_price_now;
 
     return gamesinfo;
@@ -32,10 +32,11 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
 
     switch (location)
     {
-        case 0:  //插入到尾部
+        case 0: //插入到尾部
         {
-            while(p->next)
+            while (p->next)
                 p = p->next;
+            
             p->next = malloc(sizeof(GamesList));
             p->next->data = info;
             p->next->next = NULL;
@@ -57,11 +58,11 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
         }
         default:  //插入到中间
         {
-            for(int i = 1; i <= location - 1; i++)
+            for (int i = 1; i <= location - 1; i++)
             {
                 p = p->next;
 
-                if(!p)
+                if (!p)
                 {
                     printf("插入失败! 目标位置超出已有项目数量\n");
                     return false;
@@ -84,9 +85,9 @@ bool Delete_a_Game(GamesList *L, char *id)
 {
     GamesList *cur = L, *del = cur->next;
     
-    for(; del; del = del->next, cur = cur->next)
+    for (; del; del = del->next, cur = cur->next)
     {
-        if(strcmp(del->data.game_id, id) == 0)
+        if (strcmp(del->data.game_id, id) == 0)
         {
             cur->next = del->next;
             free(del);
@@ -104,9 +105,9 @@ bool Fix_Game(GamesList *L, char *id, GamesInfo info)
 {
     GamesList *cur = L;
     
-    for(; cur; cur = cur->next)
+    for (; cur; cur = cur->next)
     {
-        if(strcmp(cur->data.game_id, id) == 0)
+        if (strcmp(cur->data.game_id, id) == 0)
         {
             strcpy(cur->data.game_id, info.game_id);
             strcpy(cur->data.game_name, info.game_name);

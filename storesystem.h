@@ -27,7 +27,7 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location);
 bool Delete_a_Game(GamesList *L, char *id);
 bool Fix_Game(GamesList *L, char *id, GamesInfo info);
 bool AdminCheck();
-GamesList* SearchGame(GamesList *L, char *ch,int mode);//最后的整数如果是1，则按名称查询，如果为0，则按ID查询.
+GamesList* SearchGame(GamesList *L, char *ch, int mode);//最后的整数如果是1，则按名称查询，如果为0，则按ID查询.
 GamesInfo Read_Game_Info();
 void Show_a_Game(GamesList *p);
 void Show_All(GamesList *L);
