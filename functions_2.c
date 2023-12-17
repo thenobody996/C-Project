@@ -8,10 +8,15 @@ void destory_list(GamesList **pL)
 {
     GamesList *cur = *pL, *des;
 
-    for (; cur->next; des = cur->next, cur->next = des->next)
+    while(cur->next)
+    {
+        des = cur->next;
+        cur->next = des->next;
         free(des);
+    }
+    
     free(*pL);
-    *pL = NULL;
+    (*pL) = NULL;
     CurrentCnt = 0;
 }
 

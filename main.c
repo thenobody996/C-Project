@@ -160,6 +160,7 @@ int main(void)
 
             case 7:
                 destory_list_and_file(&gamesList);
+                init_list(&gamesList);
                 break;
 
             case 8:
