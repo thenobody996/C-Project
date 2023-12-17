@@ -19,10 +19,11 @@ bool AdminCheck()
     char password[16] = {0};
     int i = 0;
     char input;
+    printf("请输入管理员密码: ");
         while (1)
         {
             input = _getch();//隐藏输入
-            if(input == '\n')
+            if(input == '\r')
             {
                 break;
             }
@@ -36,6 +37,7 @@ bool AdminCheck()
                 printf("*");
             }
         }
+        printf("\n");
     if(!strcmp(password,PASS_WD))
         return true;
     else

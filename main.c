@@ -72,7 +72,7 @@ int main(void)
         switch (code)
         {
             case 1:
-                printf("%-25s%-35s%-8s%-8s%-4s%-8s","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
                 Show_All(gamesList);
                 break;
 
@@ -82,11 +82,11 @@ int main(void)
                 result = SearchGame(gamesList,name,1);
                 if(!result)
                 {
-                    printf("游戏名为 %s 的游戏不存在\n", name);
+                    printf("游戏名为 %s 的游戏不存在, 输入回车继续\n", name);
                     getchar();
                     break;
                 }
-                printf("%-25s%-35s%-8s%-8s%-4s%-8s","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
                 Show_a_Game(result);
                 break;
 
@@ -103,82 +103,104 @@ int main(void)
                         }
                         if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
                         {
-                            printf("此游戏已存在\n");
+                            printf("此游戏已存在, 输入回车继续\n");
                             getchar();
                             break;
                         }
                         Add_a_Game(gamesList,info,inputnum);
                         break;
                     } 
-                else    
-                    break;
-
-                   
-                    
-            case 4:
-                printf("请输入你要删除的游戏对应的ID: ");
-                gets(ID);
-                result = SearchGame(gamesList,ID,0);
-                if(!result)
-                {
-                    printf("ID为 %s 的游戏不存在\n", ID);
-                    getchar();
-                    break;
-                }
-                printf("%-25s%-35s%-8s%-8s%-4s%-8s","游戏ID","游戏名称","原价","折扣","现价","史低价");
-                Show_a_Game(result);
-                printf("以上是你要删除的信息, 确认删除请输入y, 取消则输入n: ");
-                while ((respond = getchar()) != 'n')
-                {
-                    if(respond = 'y')
+                else
                     {   
-                        printf("已执行删除功能\n");
-                        Delete_a_Game(gamesList,ID);
-                        while (getchar()!= '\n')
-                            continue;
+                        printf("密码错误, 操作已取消");
                         break;
                     }
-                    else
+                    
+            case 4:
+                if(AdminCheck())
                     {
-                        printf("输入错误, 请重新输入\n");
-                        while (getchar()!= '\n')
-                            continue;
-                        continue;
+                        printf("请输入你要删除的游戏对应的ID: ");
+                        gets(ID);
+                        result = SearchGame(gamesList,ID,0);
+                        if(!result)
+                        {
+                            printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
+                            getchar();
+                            break;
+                        }
+                        printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                        Show_a_Game(result);
+                        printf("以上是你要删除的信息, 确认删除请输入y, 取消则输入n: ");
+                        while ((respond = getchar()) != 'n')
+                        {
+                            if(respond = 'y')
+                            {   
+                                printf("已执行删除功能, 输入回车继续\n");
+                                Delete_a_Game(gamesList,ID);
+                                while (getchar()!= '\n')
+                                    continue;
+                                break;
+                            }
+                            else
+                            {
+                                printf("输入错误, 请重新输入\n");
+                                while (getchar()!= '\n')
+                                    continue;
+                                continue;
+                            }
+                        }
+                        break;
                     }
-                }
-                break;
-
+                else
+                {
+                    printf("密码错误, 操作已取消");
+                        break;
+                }    
             case 5:
-                printf("请输入你要修改的游戏对应的ID: ");
-                gets(ID);
-                result = SearchGame(gamesList,ID,0);
-                if(!result)
-                {
-                    printf("ID为 %s 的游戏不存在\n", ID);
-                    getchar();
-                    break;
-                }
-                printf("%-25s%-35s%-8s%-8s%-4s%-8s","游戏ID","游戏名称","原价","折扣","现价","史低价");
-                Show_a_Game(result);
-                printf("请输入你需要更正的信息\n");
-                info = Read_Game_Info();
-                if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
-                {
-                    printf("此游戏已存在\n");
-                    getchar();
-                    break;
-                }
-                Fix_Game(gamesList,ID,info);
-                break;
-
+                if(AdminCheck())
+                    {
+                        printf("请输入你要修改的游戏对应的ID: ");
+                        gets(ID);
+                        result = SearchGame(gamesList,ID,0);
+                        if(!result)
+                        {
+                            printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
+                            getchar();
+                            break;
+                        }
+                        printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                        Show_a_Game(result);
+                        printf("请输入你需要更正的信息\n");
+                        info = Read_Game_Info();
+                        if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
+                        {
+                            printf("此游戏已存在, 输入回车继续\n");
+                            getchar();
+                            break;
+                        }
+                        Fix_Game(gamesList,ID,info);
+                        break;
+                    }
+                else
+                    {
+                        printf("密码错误, 操作已取消");
+                        break;
+                    }
             case 6: 
                 break;
 
             case 7:
-                destory_list_and_file(&gamesList);
-                init_list(&gamesList);
-                break;
-
+                if(AdminCheck())
+                    {
+                        destory_list_and_file(&gamesList);
+                        init_list(&gamesList);
+                        break;
+                    }
+                else
+                    {
+                        printf("密码错误, 操作已取消");
+                        break;
+                    }   
             case 8:
                 destory_list(&gamesList);
                 return 0;
