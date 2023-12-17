@@ -58,6 +58,8 @@ int main(void)
         while(!scanf("%d",&code))
         {
             printf("输入错误，应当输入一个数字\n");
+            while (getchar()!= '\n')
+                continue;
         }
         while (code > 10)
         {
@@ -69,6 +71,7 @@ int main(void)
         switch (code)
         {
             case 1:
+
                 Show_All(gamesList);
                 break;
 
@@ -90,6 +93,8 @@ int main(void)
                 while(!scanf("%d",&inputnum))
                 {
                     printf("输入错误，应当输入一个数字\n");
+                    while (getchar()!= '\n')
+                        continue;
                 }
                 Add_a_Game(gamesList,info,inputnum);
                 break;
