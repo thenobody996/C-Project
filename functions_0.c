@@ -19,7 +19,7 @@ void init_list(GamesList **pL)
         perror("fopen has occurred an error");
     }
 
-    while (fscanf(f,"%25s%35s%8f%4f%8f%8f|",
+    while (fscanf(f,"%25s%35s%8f%4f%8f%8f",
     info.game_id,info.game_name,&info.game_price_origin,&info.game_discount,&info.game_price_now,&info.game_price_history)
     != EOF)
     {
