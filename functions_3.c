@@ -75,5 +75,5 @@ void Show_All(GamesList *L)
 
 void Show_a_Game(GamesList *p)
 {
-    printf("%-25s|%-35s|%-8.2f|-%-4.1f%%|%-8.2f|%-8.2f\n",p->data.game_id,p->data.game_name,p->data.game_price_origin,p->data.game_discount,p->data.game_price_now,p->data.game_price_history);
+    printf("|%-25s|%-35s|%-8.2f|-%-4.1f%%|%-8.2f|%-8.2f|\n",p->data.game_id,p->data.game_name,p->data.game_price_origin,p->data.game_discount,p->data.game_price_now,p->data.game_price_history);
 }

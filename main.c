@@ -72,7 +72,7 @@ int main(void)
         switch (code)
         {
             case 1:
-                printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n","|游戏ID","|游戏名称","|原价","|折扣","|现价","|史低价");
                 Show_All(gamesList);
                 break;
 
@@ -86,7 +86,7 @@ int main(void)
                     getchar();
                     break;
                 }
-                printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n","|游戏ID","|游戏名称","|原价","|折扣","|现价","|史低价");
                 Show_a_Game(result);
                 break;
 
@@ -128,7 +128,7 @@ int main(void)
                             getchar();
                             break;
                         }
-                        printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                        printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n","|游戏ID","|游戏名称","|原价","|折扣","|现价","|史低价");
                         Show_a_Game(result);
                         printf("以上是你要删除的信息, 确认删除请输入y, 取消则输入n: ");
                         while ((respond = getchar()) != 'n')
@@ -168,7 +168,7 @@ int main(void)
                             getchar();
                             break;
                         }
-                        printf("%-27s%-40s%-11s%-9s%-11s%-11s\n","游戏ID","游戏名称","原价","折扣","现价","史低价");
+                        printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n","|游戏ID","|游戏名称","|原价","|折扣","|现价","|史低价");
                         Show_a_Game(result);
                         printf("请输入你需要更正的信息\n");
                         info = Read_Game_Info();
