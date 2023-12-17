@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
+#include<conio.h>
 #include"storesystem.h"
 
 void inputnumCheck(int *a)
@@ -13,8 +14,33 @@ void inputnumCheck(int *a)
             continue;
     }
 }
-
-
+bool AdminCheck()
+{
+    char password[16] = {0};
+    int i = 0;
+    char input;
+        while (1)
+        {
+            input = _getch();//隐藏输入
+            if(input == '\n')
+            {
+                break;
+            }
+            else if(input == '\b')
+            {
+                printf("\b\b");
+                i--;
+            }
+            else{
+                password[i++] = input;
+                printf("*");
+            }
+        }
+    if(!strcmp(password,PASS_WD))
+        return true;
+    else
+        return false;
+}
 
 GamesList* SearchGame(GamesList *L, char *ch, int mode)
 {

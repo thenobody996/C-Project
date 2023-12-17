@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
+#include<conio.h>
 #include"storesystem.h"
 
 
@@ -90,23 +91,30 @@ int main(void)
                 break;
 
             case 3:
-                info = Read_Game_Info();
-                printf("要插入到链表的第几位？\n提示: 输入0视为添加到链表最后一位: ");
-                while(!scanf("%d",&inputnum))
-                {
-                    printf("输入错误, 应当输入一个数字\n");
-                    while (getchar()!= '\n')
-                        continue;
-                }
-                if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
-                {
-                    printf("此游戏已存在\n");
-                    getchar();
+                if(AdminCheck())
+                    {
+                        info = Read_Game_Info();
+                        printf("要插入到链表的第几位？\n提示: 输入0视为添加到链表最后一位: ");
+                        while(!scanf("%d",&inputnum))
+                        {
+                            printf("输入错误, 应当输入一个数字\n");
+                            while (getchar()!= '\n')
+                                continue;
+                        }
+                        if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
+                        {
+                            printf("此游戏已存在\n");
+                            getchar();
+                            break;
+                        }
+                        Add_a_Game(gamesList,info,inputnum);
+                        break;
+                    } 
+                else    
                     break;
-                }
-                Add_a_Game(gamesList,info,inputnum);
-                break;
 
+                   
+                    
             case 4:
                 printf("请输入你要删除的游戏对应的ID: ");
                 gets(ID);
