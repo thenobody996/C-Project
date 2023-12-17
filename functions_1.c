@@ -97,7 +97,6 @@ bool Delete_a_Game(GamesList *L, char *id)
         }
     }
     
-    printf("删除失败! ID为 %s 的游戏不存在\n", id);
     return false;
 }
 
@@ -121,7 +120,6 @@ bool Fix_Game(GamesList *L, char *id, GamesInfo info)
         }
     }
     
-    printf("修改失败! ID为 %s 的游戏不存在\n", id);
     return false;
 }
 

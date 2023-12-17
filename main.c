@@ -76,6 +76,11 @@ int main(void)
                 printf("请输入你要查找的游戏对应名称：");
                 gets(name);
                 result = SearchGame(gamesList,name,1);
+                if(!result)
+                {
+                    printf("游戏名为 %s 的游戏不存在\n", name);
+                    break;
+                }
                 Show_a_Game(result);
                 break;
 
@@ -93,6 +98,11 @@ int main(void)
                 printf("请输入你要删除的游戏对应的ID：");
                 gets(ID);
                 result = SearchGame(gamesList,ID,0);
+                if(!result)
+                {
+                    printf("ID为 %s 的游戏不存在\n", ID);
+                    break;
+                }
                 Show_a_Game(result);
                 printf("以上是你要删除的信息，确认删除请输入y，取消则输入n: ");
                 while ((respond = getchar()) != 'n')
@@ -116,9 +126,14 @@ int main(void)
                 break;
 
             case 5:
-                printf("请输入你要修改的游戏对应的ID：\n");
+                printf("请输入你要修改的游戏对应的ID：");
                 gets(ID);
                 result = SearchGame(gamesList,ID,0);
+                if(!result)
+                {
+                    printf("ID为 %s 的游戏不存在\n", ID);
+                    break;
+                }
                 Show_a_Game(result);
                 printf("请输入你需要更正的信息\n");
                 info = Read_Game_Info();
