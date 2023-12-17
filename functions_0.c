@@ -28,7 +28,6 @@ void init_list(GamesList **pL)
         ends->next = L;//将上一个节点的指针域指向这个新建的节点
         ends = L;
         CurrentCnt++;
-        printf("|%-25s|%-35s|%-8.2f|%-4.1f|%-8.2f|%-8.2f|\n",info.game_id,info.game_name,info.game_price_origin,info.game_discount,info.game_price_now,info.game_price_history);
     }
     ends->next = NULL;
     
