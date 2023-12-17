@@ -63,7 +63,7 @@ bool Add_a_Game(GamesList *L, GamesInfo info, int location)
 
                 if(!p)
                 {
-                    printf("插入失败! 目标位置超出已有项目数量");
+                    printf("插入失败! 目标位置超出已有项目数量\n");
                     return false;
                 }
             }
