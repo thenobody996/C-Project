@@ -82,6 +82,7 @@ int main(void)
                 if(!result)
                 {
                     printf("游戏名为 %s 的游戏不存在\n", name);
+                    getchar();
                     break;
                 }
                 Show_a_Game(result);
@@ -99,6 +100,7 @@ int main(void)
                 if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
                 {
                     printf("此游戏已存在\n");
+                    getchar();
                     break;
                 }
                 Add_a_Game(gamesList,info,inputnum);
@@ -111,6 +113,7 @@ int main(void)
                 if(!result)
                 {
                     printf("ID为 %s 的游戏不存在\n", ID);
+                    getchar();
                     break;
                 }
                 Show_a_Game(result);
@@ -142,6 +145,7 @@ int main(void)
                 if(!result)
                 {
                     printf("ID为 %s 的游戏不存在\n", ID);
+                    getchar();
                     break;
                 }
                 Show_a_Game(result);
@@ -150,6 +154,7 @@ int main(void)
                 if(SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
                 {
                     printf("此游戏已存在\n");
+                    getchar();
                     break;
                 }
                 Fix_Game(gamesList,ID,info);
@@ -176,5 +181,6 @@ int main(void)
                 printf("输入错误, 请重试\n");
             break;
         }
+        printf("\n\n");
     }
 }
