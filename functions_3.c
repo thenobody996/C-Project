@@ -31,7 +31,7 @@ bool AdminCheck()
         }
         else if (input == '\b')
         {
-            printf("\b \b");
+            printf("\b \b");//退格
             i--;
         }
         else
