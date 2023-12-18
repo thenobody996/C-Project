@@ -32,7 +32,7 @@ GamesInfo Read_Game_Info();
 void Show_a_Game(GamesList *p);
 void Show_All(GamesList *L);
 int SAVE_FILE(GamesList *L);
-void Sort_Game(GamesList *L);
+void Sort_Game(GamesList **pL, int sortBy);
 void destory_list(GamesList **pL);
 void destory_list_and_file(GamesList **pL);
 void sort_Game(GamesList *L);
