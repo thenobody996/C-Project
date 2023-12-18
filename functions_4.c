@@ -41,13 +41,13 @@ void sort_Game_pricenow(GamesList *L)
 
     while (current != NULL) {
         GamesList *next = current->next;
-        if (sortedList == NULL || sortedList->data.game_price_now > current->data.game_price_now) 
+        if (sortedList == NULL || sortedList->data.game_price_now < current->data.game_price_now) 
         {
             current->next = sortedList;
             sortedList = current;
         } else {
         GamesList *temp = sortedList;
-        while (temp->next != NULL && temp->next->data.game_price_now  < current->data.game_price_now ) {
+        while (temp->next != NULL && temp->next->data.game_price_now  > current->data.game_price_now ) {
                 temp = temp->next;
             }
             current->next = temp->next;
@@ -65,37 +65,39 @@ void sort_Game_pricenow(GamesList *L)
 
 void sort_Game_history(GamesList *L) {
     if (L == NULL || L->next == NULL) {
-        return;  
+        return;
     }
 
-    GamesList *sortedList = NULL;  
+    GamesList *sortedList = NULL;
     GamesList *current = L;
 
     while (current != NULL) {
         GamesList *next = current->next;
-        if (sortedList == NULL || sortedList->data.game_price_history > current->data.game_price_history) {
+
+        if (sortedList == NULL || sortedList->data.game_price_history < current->data.game_price_history) {
             current->next = sortedList;
             sortedList = current;
         } else {
             GamesList *temp = sortedList;
-            while (temp->next != NULL && temp->next->data.game_price_history < current->data.game_price_history) {
+            while (temp->next != NULL && temp->next->data.game_price_history > current->data.game_price_history) {
                 temp = temp->next;
             }
             current->next = temp->next;
             temp->next = current;
         }
+
         current = next;
     }
-            while (sortedList != NULL) 
-            {
+    while (sortedList != NULL) {
         GamesList *temp = sortedList;
         sortedList = sortedList->next;
         L->next = temp;
         L = L->next;
-        }
+    }
 }
 
 void sort_Game_discount(GamesList *L) {
+    printf("s");
     if (L == NULL || L->next == NULL) {
         return;  
     }
@@ -105,12 +107,12 @@ void sort_Game_discount(GamesList *L) {
 
     while (current != NULL) {
         GamesList *next = current->next;
-        if (sortedList == NULL || sortedList->data.game_discount > current->data.game_discount) {
+        if (sortedList == NULL || sortedList->data.game_discount < current->data.game_discount) {
             current->next = sortedList;
             sortedList = current;
         } else {
             GamesList *temp = sortedList;
-            while (temp->next != NULL && temp->next->data.game_discount < current->data.game_discount) {
+            while (temp->next != NULL && temp->next->data.game_discount > current->data.game_discount) {
                 temp = temp->next;
             }
             current->next = temp->next;

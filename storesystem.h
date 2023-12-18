@@ -35,7 +35,6 @@ int SAVE_FILE(GamesList *L);
 void Sort_Game(GamesList **pL, int sortBy);
 void destory_list(GamesList **pL);
 void destory_list_and_file(GamesList **pL);
-void sort_Game(GamesList *L);
 void sort_Game_pricenow(GamesList *L);
 void sort_Game_history(GamesList *L);
 void sort_Game_discount(GamesList *L);
