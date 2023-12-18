@@ -97,6 +97,8 @@ int main(void)
 
                 printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n", "|游戏ID", "|游戏名称", "|原价", "|折扣", "|现价", "|史低价");
                 Show_a_Game(result);
+                printf("输入回车继续: ");
+                getchar();
                 break;
 
             case 3:
@@ -115,6 +117,7 @@ int main(void)
                         if (SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
                         {
                             printf("此游戏已存在, 输入回车继续\n");
+                            getchar();
                             while (getchar()!= '\n');
                             break;
                         }
@@ -138,6 +141,7 @@ int main(void)
                     if (!result)
                     {
                         printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
+                        getchar();
                         while (getchar()!= '\n');
                         break;
                     }
@@ -182,6 +186,7 @@ int main(void)
                     if (!result)
                     {
                         printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
+                        getchar();
                         while (getchar()!= '\n');
                         break;
                     }
@@ -220,6 +225,7 @@ int main(void)
                 Sort_Game(&gamesList ,inputnum);
                 Show_All(gamesList);
                 printf("输入回车键继续: ");
+                getchar();
                 while (getchar()!= '\n');
                 break;
 
