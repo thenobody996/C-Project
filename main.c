@@ -182,7 +182,7 @@ int main(void)
                     if (!result)
                     {
                         printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
-                        getchar();
+                        while (getchar()!= '\n');
                         break;
                     }
 
@@ -220,7 +220,7 @@ int main(void)
                 Sort_Game(&gamesList ,inputnum);
                 Show_All(gamesList);
                 printf("输入回车键继续: ");
-                getchar();
+                while (getchar()!= '\n');
                 break;
 
             case 7:
