@@ -91,7 +91,7 @@ int main(void)
                 if(!result)
                 {
                     printf("游戏名为 %s 的游戏不存在, 输入回车继续\n", name);
-                    getchar();
+                    while (getchar()!= '\n');
                     break;
                 }
 
@@ -115,7 +115,7 @@ int main(void)
                         if (SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
                         {
                             printf("此游戏已存在, 输入回车继续\n");
-                            getchar();
+                            while (getchar()!= '\n');
                             break;
                         }
 
@@ -138,7 +138,7 @@ int main(void)
                     if (!result)
                     {
                         printf("ID为 %s 的游戏不存在, 输入回车继续\n", ID);
-                        getchar();
+                        while (getchar()!= '\n');
                         break;
                     }
 
