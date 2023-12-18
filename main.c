@@ -192,12 +192,12 @@ int main(void)
                     printf("请输入你需要更正的信息\n");
                     info = Read_Game_Info();
 
-                    if (SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
-                    {
-                        printf("此游戏已存在, 输入回车继续\n");
-                        getchar();
-                        break;
-                    }
+                    //if (SearchGame(gamesList, info.game_id, 0) || SearchGame(gamesList, info.game_name, 1))
+                    //{
+                    //    printf("此游戏已存在, 输入回车继续\n");
+                    //    getchar();
+                    //    break;
+                    //}
 
                     Fix_Game(gamesList, ID, info);
                     break;
