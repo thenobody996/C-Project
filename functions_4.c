@@ -97,7 +97,6 @@ void sort_Game_history(GamesList *L) {
 }
 
 void sort_Game_discount(GamesList *L) {
-    printf("s");
     if (L == NULL || L->next == NULL) {
         return;  
     }
