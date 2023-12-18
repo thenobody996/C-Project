@@ -209,6 +209,18 @@ int main(void)
                 }
             
             case 6: 
+                printf("---1.按照当前价格从低到高排序\n---2.按照史低价格从低到高排序\n---3.按照折扣百分比从高到低排序\n");
+                printf("输入排序规则对应的序号: ");
+                while (!scanf("%d", &inputnum))
+                        {
+                            printf("输入错误, 应当输入一个数字\n");
+                            while (getchar() != '\n')
+                                continue;
+                        }
+                Sort_Game(&gamesList ,inputnum);
+                Show_All(gamesList);
+                printf("输入回车键继续: ");
+                getchar();
                 break;
 
             case 7:
