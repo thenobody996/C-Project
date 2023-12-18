@@ -2,7 +2,7 @@
 #define MAX_ID 25
 #define MAX_NAME_LEN 35
 #define MAX_ORIGINAL_PRICE 20
-#define PASS_WD "403forbidden"
+#define PASS_WD "1234"
 
 typedef struct 
 {
