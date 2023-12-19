@@ -20,7 +20,10 @@ bool AdminCheck()
     char password[16] = {0};
     int i = 0;
     char input;
-
+    if(admin)
+    {
+        return true;
+    }
     printf("请输入管理员密码: ");
     while (1)
     {
@@ -43,9 +46,13 @@ bool AdminCheck()
     printf("\n");
     
     if (!strcmp(password,PASS_WD))
-        return true;
+        {
+            admin = true;
+            return true;
+        }   
     else
         return false;
+    
 }
 
 GamesList* SearchGame(GamesList *L, char *ch, int mode)
