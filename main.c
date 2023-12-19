@@ -5,7 +5,7 @@
 #include<conio.h>
 #include"storesystem.h"
 
-
+bool admin = false;
 int main(void)
 {
     int code;
@@ -54,6 +54,7 @@ int main(void)
         printf("---6.按照特定条件排序\n");
         printf("---7.删除所有数据\n");
         printf("---8.不保存数据退出\n");
+        printf("---9.管理员登陆\n");
         printf("---0.保存数据并退出系统\n");
 
         for (size_t i = 0; i < 40; i++)
@@ -245,7 +246,17 @@ int main(void)
             case 8:
                 destory_list(&gamesList);
                 return 0;
-
+            case 9:
+                if(admin)
+                {
+                    printf("已登录管理员，请勿重复登陆");
+                    break;
+                }
+                else
+                {
+                    AdminCheck();
+                    break;
+                }
             case 0:
                 SAVE_FILE(gamesList);
                 destory_list(&gamesList);
