@@ -21,6 +21,7 @@ typedef struct node
 }GamesList;
 
 extern int CurrentCnt;
+extern bool admin;
 
 void init_list(GamesList **pL);
 bool Add_a_Game(GamesList *L, GamesInfo info, int location);
