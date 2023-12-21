@@ -224,6 +224,7 @@ int main(void)
                                 continue;
                         }
                 Sort_Game(&gamesList ,inputnum);
+                printf("%-28s%-40s%-11s%-9s%-11s%-12s|\n", "|游戏ID", "|游戏名称", "|原价", "|折扣", "|现价", "|史低价");
                 Show_All(gamesList);
                 printf("输入回车键继续: ");
                 getchar();
